@@ -1,5 +1,6 @@
 "use client";
 
+import "@/lib/auth-env";
 import React from "react";
 import { SessionProvider } from "next-auth/react";
 import { CartProvider } from "@/lib/cart-context";

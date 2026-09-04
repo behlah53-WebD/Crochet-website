@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Offline — Loom & Love Atelier</title>
+  <meta name="theme-color" content="#B85C38">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: #FAF6F0;
+      color: #3A2E2A;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+      padding: 1.5rem;
+      text-align: center;
+    }
+    .card {
+      max-width: 440px;
+      width: 100%;
+      background: #FDFBF7;
+      border: 1px solid #E5DAC6;
+      border-radius: 2rem;
+      padding: 2.5rem 2rem;
+      box-shadow: 0 16px 36px -8px rgba(184, 92, 56, 0.14), 0 4px 12px rgba(43, 35, 32, 0.05);
+      position: relative;
+    }
+    .icon-badge {
+      width: 4.5rem;
+      height: 4.5rem;
+      border-radius: 9999px;
+      background: #F5ECE1;
+      color: #B85C38;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1.25rem;
+      box-shadow: 0 4px 12px rgba(184, 92, 56, 0.15);
+    }
+    .tag {
+      display: inline-block;
+      font-size: 0.7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: #B85C38;
+      background: #F5ECE1;
+      padding: 0.35rem 0.85rem;
+      border-radius: 9999px;
+      margin-bottom: 0.75rem;
+    }
+    h1 {
+      font-family: Georgia, 'Playfair Display', serif;
+      font-size: 1.75rem;
+      font-weight: 700;
+      color: #3A2E2A;
+      margin-bottom: 0.75rem;
+      line-height: 1.2;
+    }
+    p {
+      font-size: 0.875rem;
+      color: #6E5D57;
+      line-height: 1.6;
+      margin-bottom: 1.75rem;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.85rem 2rem;
+      border-radius: 9999px;
+      background: #B85C38;
+      color: #FAF6F0;
+      font-size: 0.8rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 6px 16px rgba(184, 92, 56, 0.3);
+      transition: background 0.2s, transform 0.1s;
+    }
+    .btn:hover {
+      background: #9E4927;
+    }
+    .btn:active {
+      transform: scale(0.98);
+    }
+    .brand-foot {
+      margin-top: 1.5rem;
+      font-size: 0.75rem;
+      color: #A39088;
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="icon-badge">
+      <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="1" y1="1" x2="23" y2="23"></line>
+        <path d="M16.72 11.06A10.94 10.94 0 0 1 19 12.55"></path>
+        <path d="M5 12.55a10.94 10.94 0 0 1 5.17-2.39"></path>
+        <path d="M10.71 5.05A16 16 0 0 1 22.58 9"></path>
+        <path d="M1.42 9a15.91 15.91 0 0 1 4.7-2.88"></path>
+        <path d="M8.53 16.11a6 6 0 0 1 6.95 0"></path>
+        <line x1="12" y1="20" x2="12.01" y2="20"></line>
+      </svg>
+    </div>
+    <br />
+    <span class="tag">Atelier Notice</span>
+    <h1>You're Currently Offline</h1>
+    <p>
+      It seems your internet connection paused. Don't worry, your shopping bag and saved creations will be waiting when you return.
+    </p>
+    <button class="btn" onclick="window.location.reload()">
+      Retry Connection
+    </button>
+    <div class="brand-foot">
+      Loom & Love • Handmade with heart
+    </div>
+  </div>
+</body>
+</html>

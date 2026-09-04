@@ -2,8 +2,7 @@ const getAuthUrl = () => {
   const url =
     process.env.NEXTAUTH_URL ||
     process.env.VERCEL_PROJECT_PRODUCTION_URL ||
-    (process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : null) ||
-    process.env.NEXT_PUBLIC_APP_URL;
+    (process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : null);
 
   if (!url || !url.trim()) {
     return "http://localhost:3000";

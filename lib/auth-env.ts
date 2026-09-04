@@ -1,18 +1,29 @@
 // Ensure NEXTAUTH_URL and related authentication environment variables
-// are always valid, non-empty URLs even during static export, SSG, or
-// deployment environments where NEXTAUTH_URL might be set to an empty string.
+// dynamically resolve to the actual current origin and are never empty during
+// build, SSR, or client execution.
 
-if (typeof process !== "undefined" && process.env) {
+if (typeof window !== "undefined") {
+  // In the browser, dynamically resolve to the live website URL
+  if (
+    !process.env.NEXTAUTH_URL ||
+    !process.env.NEXTAUTH_URL.trim() ||
+    (process.env.NEXTAUTH_URL.includes("localhost") && !window.location.hostname.includes("localhost"))
+  ) {
+    process.env.NEXTAUTH_URL = window.location.origin;
+  }
+} else if (typeof process !== "undefined" && process.env) {
   const getFallbackUrl = () => {
     const raw =
       process.env.NEXTAUTH_URL ||
       process.env.VERCEL_PROJECT_PRODUCTION_URL ||
-      process.env.VERCEL_URL ||
-      process.env.NEXT_PUBLIC_APP_URL ||
-      "http://localhost:3000";
+      process.env.VERCEL_URL;
+
+    if (!raw || !raw.trim()) {
+      // Local development fallback
+      return "http://localhost:3000";
+    }
 
     const clean = raw.trim();
-    if (!clean) return "http://localhost:3000";
     return clean.startsWith("http://") || clean.startsWith("https://")
       ? clean
       : `https://${clean}`;

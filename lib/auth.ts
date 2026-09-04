@@ -40,7 +40,11 @@ export const authOptions: NextAuthOptions = {
         try {
           const db = await connectToDatabase();
           if (db && UserModel) {
-            const user = await UserModel.findOne({ email });
+            const escapedEmail = email.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+            const user = await UserModel.findOne({
+              email: { $regex: new RegExp(`^${escapedEmail}$`, "i") },
+            });
+
             if (user && user.passwordHash) {
               const isMatch = await bcrypt.compare(credentials.password, user.passwordHash);
               if (isMatch) {
@@ -50,7 +54,11 @@ export const authOptions: NextAuthOptions = {
                   email: user.email,
                   role: user.role || "CUSTOMER",
                 };
+              } else {
+                console.warn(`[Auth] Password mismatch for: ${email}`);
               }
+            } else if (!user) {
+              console.warn(`[Auth] No user found with email: ${email}`);
             }
           }
         } catch (err) {

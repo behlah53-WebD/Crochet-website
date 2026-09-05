@@ -36,7 +36,7 @@ export function BackToTopYarn() {
           whileTap={{ scale: 0.95 }}
           onClick={scrollToTop}
           aria-label="Back to top"
-          className="fixed bottom-20 sm:bottom-8 right-5 sm:right-8 z-40 p-3 rounded-full bg-[#FDFBF7]/95 backdrop-blur-md border border-[#E5DAC6] shadow-studio-float text-clay-600 hover:text-espresso-800 transition-colors group flex items-center justify-center"
+          className="fixed bottom-20 sm:bottom-8 right-5 sm:right-8 z-40 p-3 rounded-full bg-[#FDFBF7]/95 backdrop-blur-md border border-[#E5DAC6] shadow-studio-float text-clay-600 hover:text-espresso-800 transition-colors group hidden sm:flex items-center justify-center"
         >
           {/* Circular Progress Stroke */}
           <svg className="w-10 h-10 -rotate-90 pointer-events-none" viewBox="0 0 36 36">

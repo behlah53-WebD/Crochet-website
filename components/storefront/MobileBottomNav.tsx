@@ -154,9 +154,6 @@ export function MobileBottomNav() {
             );
           })}
         </div>
-
-        {/* Bottom Horizontal Capsule Indicator Line */}
-        <div className="absolute bottom-1.5 left-1/2 -translate-x-1/2 w-24 h-1 bg-[#2B2320]/15 rounded-full pointer-events-none" />
       </nav>
     </aside>
   );

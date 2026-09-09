@@ -5,6 +5,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Home, ShoppingBag, Sparkles, BookOpen, Feather, User } from "lucide-react";
 import { useSpring } from "framer-motion";
+import { useCart } from "@/lib/cart-context";
 
 interface NavTab {
   id: string;
@@ -53,6 +54,7 @@ function generateNotchPath(x: number, width = 360, height = 60, r = 30): string 
 
 export function MobileBottomNav() {
   const pathname = usePathname();
+  const { isCartOpen } = useCart();
 
   // Determine active tab index from current route
   const getActiveIndex = () => {
@@ -92,8 +94,8 @@ export function MobileBottomNav() {
     return () => unsubscribe();
   }, [xSpring]);
 
-  // Hide on admin portal routes
-  if (pathname.startsWith("/admin")) return null;
+  // Hide on admin portal routes or when cart drawer is open
+  if (pathname.startsWith("/admin") || isCartOpen) return null;
 
   const ActiveIcon = TABS[activeIndex]?.icon ?? Home;
 
@@ -153,6 +155,8 @@ export function MobileBottomNav() {
               </Link>
             );
           })}
+          
+
         </div>
       </nav>
     </aside>
